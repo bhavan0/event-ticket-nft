@@ -1,0 +1,27 @@
+<div>
+    <p-card header="Total Tickets" [style]="{'width': '12rem', 'height': '12rem'}">
+        <h1>{{totalTickets}}</h1>
+    </p-card>
+
+    <p-card header="Tickets Left" [style]="{'width': '12rem', 'height': '12rem'}">
+        <h1>{{ticketsLeft}}</h1>
+    </p-card>
+
+    <p-card header="Tickets Cost" [style]="{'width': '12rem', 'height': '12rem'}">
+        <h1>{{ticketsCost}} ETH</h1>
+    </p-card>
+
+    <p-card header="Tickets Owned by you" [style]="{'width': '12rem', 'height': '12rem'}">
+        <h1>{{ownedByUser}}</h1>
+    </p-card>
+</div>
+<br>
+<br>
+
+<div>
+    <p-card header="{{eventHeader()}}">
+        <img [src]="imageToShow" alt="Place image title" *ngIf="!isImageLoading">
+    </p-card>
+
+    <button pButton [disabled]="disableSave()" label="Buy" class="m-r-12" (click)="buyTicket()"></button>
+</div>
