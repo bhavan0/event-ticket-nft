@@ -8,9 +8,12 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "ethereumjs-testrpc": "^6.0.3",
     "express": "^4.17.1",
     "nodemon": "^2.0.14",
     "truffle-contract": "^4.0.31",
-    "web3": "^1.6.0"
+    "web3": "^1.6.0",
+    "web3-net": "^1.6.0",
+    "web3-utils": "^1.6.0"
   }
 }

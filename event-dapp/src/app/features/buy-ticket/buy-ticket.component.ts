@@ -32,28 +32,34 @@ export class BuyTicketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTicketMetaData();
-    this.getTotalTickets();
-    this.getTicketCost();
-    this.getTicketsLeft();
+    // this.getTicketMetaData();
+    // this.getTotalTickets();
+    // this.getTicketCost();
+    // this.getTicketsLeft();
     this.getAccount();
-    this.getTicketsOwnedByUser();
-    this.getEventName();
-    this.getEventSymbol();
+    // this.getTicketsOwnedByUser();
+    // this.getEventName();
+    // this.getEventSymbol();
   }
 
   getAccount() {
-    this.accountId = this.transferService.getAccountInfo();
-    console.log(this.accountId)
+    this.transferService.getAccountInfo().then(data => {
+
+      console.log('got adderess');
+      this.accountId = data;
+      console.log(this.accountId);
+    });
+
   }
 
   buyTicket() {
-    this.dataService.buyTicket(this.accountId).subscribe(data => {
-      console.log('Bought Ticket');
-      console.log(data);
-      this.getTicketsLeft();
-      this.getTicketsOwnedByUser();
-    })
+    this.transfer();
+    // this.dataService.buyTicket(this.accountId).subscribe(data => {
+    //   console.log('Bought Ticket');
+    //   console.log(data);
+    //   this.getTicketsLeft();
+    //   this.getTicketsOwnedByUser();
+    // })
   }
 
   getTicketMetaData() {
@@ -111,11 +117,23 @@ export class BuyTicketComponent implements OnInit {
   }
 
   disableSave() {
-    return +this.ticketsLeft === 0;
+    // return +this.ticketsLeft === 0;
+    return false;
   }
 
-  eventHeader(){
+  eventHeader() {
     return this.eventName + ' | ' + this.eventSymbol;
+  }
+
+  transfer() {
+    this.dataService.transferMoney(this.accountId).subscribe(data => {
+      console.log(data);
+      debugger;
+    })
+  }
+
+  testGet() {
+
   }
 
 }

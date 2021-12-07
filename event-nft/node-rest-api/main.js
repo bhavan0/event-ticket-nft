@@ -74,10 +74,37 @@ app.post('/balance-of', (req, res) => {
   })
 });
 
+app.post('/pay-random', (req, res) => {
+  console.log(req.body);
+  let currentAcount = req.body.account;
+  console.log("**** POST /pay-random ****");
+  truffle_connect.payRandom(currentAcount, function (answer) {
+    res.send(answer);
+  })
+});
+
+app.post('/mint', (req, res) => {
+  console.log(req.body);
+  let currentAcount = req.body.account;
+  console.log("**** POST /mint ****");
+  truffle_connect.mint(currentAcount, function (answer) {
+    res.send(answer);
+  })
+});
+
+app.post('/balanceOf', (req, res) => {
+  console.log(req.body);
+  let currentAcount = req.body.account;
+  console.log("**** POST /balanceOf ****");
+  truffle_connect.balanceOf2(currentAcount, function (answer) {
+    res.send(answer);
+  })
+});
+
 app.listen(port, () => {
 
   // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-  truffle_connect.web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+  truffle_connect.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/8cf80ccb22dd4231b0b609cad3f58383"));
 
   console.log("Express Listening at http://localhost:" + port);
 

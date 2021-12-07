@@ -66,6 +66,14 @@ export class DataService {
         return this.httpClient.get(imageUrl, { responseType: 'blob' });
     }
 
+    transferMoney(account: string): Observable<any> {
+        const body = {
+            account: account
+        };
+        const url = this.apiBaseUrl + 'pay-random'
+        return this.httpClient.post(url, body);
+    }
+
     private getData<T>(apiUrl: string): Observable<T> {
         const url = this.apiBaseUrl + apiUrl;
         return this.httpClient.get<T>(url);
